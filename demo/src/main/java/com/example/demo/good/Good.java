@@ -93,8 +93,9 @@ public class Good {
     @Override
     public String toString() {
         return "Good{" +
-                "good_id=" + goodId +
-                ", good_name='" + goodName + '\'' +
+                "goodId=" + goodId +
+                ", goodName='" + goodName + '\'' +
+                ", goodPrice=" + goodPrice +
                 '}';
     }
 }
