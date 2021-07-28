@@ -4,6 +4,7 @@ import com.example.demo.category.Category;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import javax.persistence.*;
 
@@ -30,8 +31,9 @@ public class Good {
     @Column(
             name = "good_id"
     )
-    @ApiModelProperty(notes = "The unique id of the good")
+    @ApiModelProperty(notes = "The unique id of the good", readOnly = true)
     private long goodId;
+
     @Column(
             name = "good_name"
     )

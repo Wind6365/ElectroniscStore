@@ -3,8 +3,12 @@ package com.example.demo.category;
 import com.example.demo.good.Good;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.media.Schema;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 
 import java.util.List;
 
@@ -28,7 +32,7 @@ public class Category {
             nullable = false,
             updatable = false
     )
-    @ApiModelProperty(notes = "The unique id of the category")
+    @ApiModelProperty(notes = "The unique id of the category", readOnly = true)
     private long id;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
@@ -90,7 +94,6 @@ public class Category {
     public void setParent(Category parent_id) {
         this.parent = parent_id;
     }
-
 
     public List<Category> getChildCategories() {
         return childCategories;

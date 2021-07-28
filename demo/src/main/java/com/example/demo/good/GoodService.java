@@ -53,6 +53,7 @@ public class GoodService {
     public void updateGood(Long goodId, String goodName, Long categoryId, Double goodPrice) {
          Good good = goodRepository.findById(goodId).orElseThrow(() ->
                  new IllegalStateException("Good with id " + goodId + " does not exist"));
+
          if(goodName != null && goodName.length() > 0 && !Objects.equals(good.getGoodName(), goodName)){
              Optional<Good> goodByName = goodRepository.findGoodByGoodName(goodName);
              if(goodByName.isPresent()){

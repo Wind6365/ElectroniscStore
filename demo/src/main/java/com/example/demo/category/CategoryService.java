@@ -35,8 +35,10 @@ public class CategoryService {
         if(categoryByCategoryName.isPresent()){
             throw new IllegalStateException("Category already exists");
         }
-        Optional<Category> parentCategory = categoryRepository.findById(category.getParent().getId());
-        parentCategory.ifPresent(category::setParent);
+        if(category.getParent() != null) {
+            Optional<Category> parentCategory = categoryRepository.findById(category.getParent().getId());
+            parentCategory.ifPresent(category::setParent);
+        }
         categoryRepository.save(category);
         System.out.println(category);
     }
@@ -55,8 +57,8 @@ public class CategoryService {
                 new IllegalStateException("Category with id " + categoryId + " does not exist"));
 
         if(categoryName != null && categoryName.length() > 0 && !Objects.equals(category.getCategoryName(), categoryName)){
-            Optional<Good> goodByName = goodRepository.findGoodByGoodName(categoryName);
-            if(goodByName.isPresent()){
+            Optional<Category> categoryByName = categoryRepository.findCategoryByCategoryName(categoryName);
+            if(categoryByName.isPresent()){
                 throw new IllegalStateException("The Category with the " + categoryName + " already exists");
             }
             category.setCategoryName(categoryName);

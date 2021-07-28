@@ -21,6 +21,8 @@ public class GoodController {
 
     @GetMapping(path = "get/goods/all")
     @ApiOperation(value = "Get List of Goods")
+
+
     public List<?> getGoods(){
         return goodService.getGoods();
     }
