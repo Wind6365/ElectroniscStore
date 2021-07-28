@@ -2,6 +2,7 @@ package com.example.demo.category;
 
 import com.example.demo.good.Good;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 
@@ -27,6 +28,7 @@ public class Category {
             nullable = false,
             updatable = false
     )
+    @ApiModelProperty(notes = "The unique id of the category")
     private long id;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
@@ -43,6 +45,7 @@ public class Category {
             name = "category_name",
             nullable = false
     )
+    @ApiModelProperty(notes = "The name of the category")
     private String categoryName;
 
     @ManyToOne

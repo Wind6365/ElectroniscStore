@@ -2,6 +2,8 @@ package com.example.demo.good;
 
 import com.example.demo.category.Category;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 
@@ -28,10 +30,12 @@ public class Good {
     @Column(
             name = "good_id"
     )
+    @ApiModelProperty(notes = "The unique id of the good")
     private long goodId;
     @Column(
             name = "good_name"
     )
+    @ApiModelProperty(notes = "The name of the good")
     private String goodName;
 
     @ManyToOne
@@ -42,6 +46,7 @@ public class Good {
     private Category category;
 
     @Column(name = "good_price")
+    @ApiModelProperty(notes = "The price of the good")
     private double goodPrice;
 
     public Good() {

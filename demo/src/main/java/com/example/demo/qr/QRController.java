@@ -1,6 +1,7 @@
 package com.example.demo.qr;
 
 import com.example.demo.good.GoodRepository;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,10 +26,9 @@ public class QRController {
     }
 
     @GetMapping("qr-code/{goodId}")
+    @ApiOperation(value = "Get QRCode of the good object by its id in the .png format")
     public ResponseEntity<byte[]> getQrCode(@PathVariable("goodId") Long goodId) {
-
         byte[] qrImage = qrCodeService.generate(goodId, WIDTH, HEIGHT);
-
         return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(qrImage);
     }
 }
